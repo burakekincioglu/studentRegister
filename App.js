@@ -5,6 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { createStore } from 'redux';
 import reducers from './src/reducers';
+import LoginForm from './src/components/LoginFrom';
 
 
 class App extends Component {
@@ -25,8 +26,9 @@ class App extends Component {
     return (
       <Provider store={createStore(reducers)}>
       <View>
-        <Text> Student Register App </Text>
+      <LoginForm />
       </View>
+      
       </Provider>
     );
   }
