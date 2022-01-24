@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Alert,TextInput} from 'react-native';
 import firebase from 'firebase/compat';
+import { connect } from 'react-redux';
+import  {emailCheanged, passwordChanged} from '../actions';
 import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
@@ -57,7 +59,7 @@ class LoginForm extends Component {
                     placeholder='Email'
                     style={inputStyle}
                     value={this.state.email}
-                    onChangeText={email => this.setState({email})} // ikinci kullanımı {text => this.setState({email: text})}
+                    onChangeText={email => this.props.emailCheanged(email)} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -67,7 +69,7 @@ class LoginForm extends Component {
                     placeholder='Password'
                     style={inputStyle}
                     value={this.state.password}
-                    onChangeText={password => this.setState({password})} // ikinci kullanımı {text => this.setState({email: text})}
+                    onChangeText={password => this.props.passwordChanged(password)} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -90,5 +92,5 @@ const styles = {
 };
 
 
-export default LoginForm;
+export default connect(null, {emailCheanged, passwordChanged})(LoginForm);
 

@@ -1,17 +1,17 @@
-export const emailChanged = (text) => {
+export const emailChanged = (email) => {
     return (dispatch) => {
         dispatch({
             type: 'email_changed',
-            payload: text
+            payload: email
         });
     };
 };
 
-export const passwordChanged = (text) => {
+export const passwordChanged = (password) => {
     return (dispatch) => {
         dispatch({
             type: 'passwordChanged',
-            payload: text
+            payload: password
         });
     };
 };
