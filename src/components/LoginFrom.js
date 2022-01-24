@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {Alert,TextInput} from 'react-native';
 import firebase from 'firebase/compat';
+//import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
+//import ReduxThunk from 'redux-thunk';
 import  {emailCheanged, passwordChanged} from '../actions';
 import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
 import Spinner from './Spinner';
+import reducers from '../reducers';
 
 class LoginForm extends Component {
     state = {email: '', password: '', loading: false};
