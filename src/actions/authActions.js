@@ -9,7 +9,7 @@ export const emailChanged = (email) => {
 
 export const passwordChanged = (password) => {
     return (dispatch) => {
-        dispatch({
+        dispatch({ // dispatch burada reducer'ı ayağa kaldırmak için var
             type: 'passwordChanged',
             payload: password
         });

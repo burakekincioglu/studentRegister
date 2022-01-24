@@ -91,6 +91,13 @@ const styles = {
       }
 };
 
+const mapStateToProps = ( {authResponse} ) => {
+    const { email, password } = authResponse;
+    return { // return dediğim anda artık bu değerler props'a dahil oluyor
+        email,
+        password
+    };
+}
 
-export default connect(null, {emailCheanged, passwordChanged})(LoginForm);
+export default connect(mapStateToProps, {emailCheanged, passwordChanged})(LoginForm);
 
