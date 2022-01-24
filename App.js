@@ -5,7 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import { createStore } from 'redux';
+//import { createStore } from 'redux';
 import reducers from './src/reducers';
 import LoginForm from './src/components/LoginFrom';
 

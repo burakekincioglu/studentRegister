@@ -4,7 +4,7 @@ import firebase from 'firebase/compat';
 //import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 //import ReduxThunk from 'redux-thunk';
-import  {emailCheanged, passwordChanged} from '../actions';
+import  {emailChanged, passwordChanged} from '../actions';
 import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
@@ -64,7 +64,7 @@ class LoginForm extends Component {
                     placeholder='Email'
                     style={inputStyle}
                     value={this.props.email}
-                    onChangeText={email => this.props.emailCheanged(email)} // ikinci kullanımı {text => this.setState({email: text})}
+                    onChangeText={email => this.props.emailChanged(email)} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -104,5 +104,5 @@ const mapStateToProps = ( {authResponse} ) => {
     };
 }
 
-export default connect(mapStateToProps, {emailCheanged, passwordChanged})(LoginForm);
+export default connect(mapStateToProps, {emailChanged, passwordChanged})(LoginForm);
 
