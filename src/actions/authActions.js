@@ -1,7 +1,9 @@
+import { EMAIL_CHANGED, PASSWORD_CHANGED } from "./types";
+
 export const emailChanged = (email) => {
     return (dispatch) => {
         dispatch({
-            type: 'email_changed',
+            type: 'EMAIL_CHANGED',
             payload: email
         });
     };
@@ -10,7 +12,7 @@ export const emailChanged = (email) => {
 export const passwordChanged = (password) => {
     return (dispatch) => {
         dispatch({ // dispatch burada reducer'ı ayağa kaldırmak için var
-            type: 'passwordChanged',
+            type: 'PASSWORD_CHANGED',
             payload: password
         });
     };

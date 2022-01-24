@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     const store = createStore( reducers, {}, applyMiddleware(ReduxThunk));
     return (
-      <Provider store={createStore(store)}>
+      <Provider store={store}>
       <View>
       <LoginForm />
       </View>

@@ -54,6 +54,8 @@ class LoginForm extends Component {
         return <Spinner size="small" />;
     }
     render(){
+        console.log('response email: ' + this.props.email);
+        console.log('response passw: ' + this.props.password);
         const {inputStyle} = styles;
         return(
             <Card>
@@ -61,7 +63,7 @@ class LoginForm extends Component {
                     <TextInput 
                     placeholder='Email'
                     style={inputStyle}
-                    value={this.state.email}
+                    value={this.props.email}
                     onChangeText={email => this.props.emailCheanged(email)} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
@@ -71,7 +73,7 @@ class LoginForm extends Component {
                     secureTextEntry 
                     placeholder='Password'
                     style={inputStyle}
-                    value={this.state.password}
+                    value={this.props.password}
                     onChangeText={password => this.props.passwordChanged(password)} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
