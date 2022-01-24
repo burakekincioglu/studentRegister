@@ -6,3 +6,12 @@ export const emailChanged = (text) => {
         });
     };
 };
+
+export const passwordChanged = (text) => {
+    return (dispatch) => {
+        dispatch({
+            type: 'passwordChanged',
+            payload: text
+        });
+    };
+};
