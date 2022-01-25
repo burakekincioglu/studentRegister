@@ -30,7 +30,7 @@ export const loginUser = ({email, password}) => {
         }
         else
         {
-            firebase.auth().signInWithEmailAndPassword(email, password)
+            firebase.auth().signInWithEmailAndPassword(email, password) // firebase de böyle bir kullanıcı varsa loginSuccess metodunun içine düşüyor
             .then(user => loginSuccess(dispatch, user))
             .catch(()=>{
                 firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -42,6 +42,8 @@ export const loginUser = ({email, password}) => {
 };
 
 const loginSuccess = (dispatch, user) => { // dispatch ile reducer hareket ettiriliyor. login_user_succes diye bir type göndericem ve o type loading'i false edicek.
+    Alert.alert('Message', 'Email and Password should not be empty.', 
+            [ {text: 'Okay', onPress: ()=> null} ]);
     dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: user

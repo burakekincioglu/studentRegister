@@ -4,7 +4,7 @@ import firebase from 'firebase/compat';
 //import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 //import ReduxThunk from 'redux-thunk';
-import  {emailChanged, passwordChanged} from '../actions';
+import  {emailChanged, passwordChanged, loginUser} from '../actions';
 import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
@@ -14,11 +14,8 @@ import reducers from '../reducers';
 class LoginForm extends Component {
     state = {email: '', password: '', loading: false};
     clickLogin(){
-        this.setState({loading: true});
-        console.log(this.state.loading);
-        const {email, password} = this.state;
-        
-        
+        const {email, password} = this.props;        
+        this.props.loginUser({email, password});
     }
     loginSuccess() {
         console.log('login başarılı');
@@ -90,5 +87,5 @@ const mapStateToProps = ( {authResponse} ) => {
     };
 }
 
-export default connect(mapStateToProps, {emailChanged, passwordChanged})(LoginForm);
+export default connect(mapStateToProps, {emailChanged, passwordChanged, loginUser})(LoginForm);
 
