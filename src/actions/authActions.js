@@ -35,7 +35,7 @@ export const loginUser = ({email, password}) => {
             .catch(()=>{
                 firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(user => loginSuccess(dispatch, user))
-                .catch(loginFail());
+                .catch( () => loginFail()); // çağrılma şekline dikkat
             });
         }
     }
