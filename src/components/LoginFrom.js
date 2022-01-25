@@ -79,7 +79,7 @@ const styles = {
 };
 
 const mapStateToProps = ( {authResponse} ) => {
-    const { email, password } = authResponse;
+    const { email, password, loading } = authResponse;
     return { // return dediğim anda artık bu değerler props'a dahil oluyor
         email,
         password,
