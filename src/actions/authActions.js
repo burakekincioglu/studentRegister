@@ -1,4 +1,6 @@
-import { EMAIL_CHANGED, PASSWORD_CHANGED } from "./types";
+import { Alert } from "react-native";
+import firebase from "firebase/compat";
+import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL } from "./types";
 
 export const emailChanged = (email) => {
     return (dispatch) => {
@@ -16,4 +18,38 @@ export const passwordChanged = (password) => {
             payload: password
         });
     };
+};
+
+export const loginUser = ({email, password}) => {
+    return(dispatch) => {
+        dispatch({type: LOGIN_USER});
+        if(email === '' || password === '')
+        {
+            Alert.alert('Message', 'Email and Password should not be empty.', 
+            [ {text: 'Okay', onPress: ()=> null} ]);
+        }
+        else
+        {
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(user => loginSuccess(dispatch, user))
+            .catch(()=>{
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(user => loginSuccess(dispatch, user))
+                .catch(loginFail());
+            });
+        }
+    }
+};
+
+const loginSuccess = (dispatch, user) => { // dispatch ile reducer hareket ettiriliyor. login_user_succes diye bir type göndericem ve o type loading'i false edicek.
+    dispatch({
+        type: LOGIN_USER_SUCCESS,
+        payload: user
+    });
+};
+
+const loginFail = (dispatch) => {
+    dispatch({
+        type: LOGIN_USER_FAIL
+    });
 };

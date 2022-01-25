@@ -17,22 +17,7 @@ class LoginForm extends Component {
         this.setState({loading: true});
         console.log(this.state.loading);
         const {email, password} = this.state;
-        if(email === '' || password === '')
-        {
-            Alert.alert('Message', 'Email and Password should not be empty.', 
-            [ {text: 'Okay', onPress: ()=> null} ]);
-            this.setState({loading: false});
-        }
-        else
-        {
-            firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(this.loginSuccess.bind(this))
-            .catch(()=>{
-                firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then(this.loginSuccess.bind(this))
-                .catch(this.loginFail.bind(this));
-            });
-        }
+        
         
     }
     loginSuccess() {
@@ -48,7 +33,7 @@ class LoginForm extends Component {
 
     renderButton()
     {
-        if(!this.state.loading){
+        if(!this.props.loading){
            return <Button onPress={this.clickLogin.bind(this)}> Login </Button>;
         }
         return <Spinner size="small" />;
@@ -100,7 +85,8 @@ const mapStateToProps = ( {authResponse} ) => {
     const { email, password } = authResponse;
     return { // return dediğim anda artık bu değerler props'a dahil oluyor
         email,
-        password
+        password,
+        loading
     };
 }
 
