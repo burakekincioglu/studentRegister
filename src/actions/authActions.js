@@ -26,7 +26,9 @@ export const loginUser = ({email, password}) => {
         if(email === '' || password === '')
         {
             Alert.alert('Message', 'Email and Password should not be empty.', 
-            [ {text: 'Okay', onPress: ()=> null} ]);
+            [ {text: 'Okay', onPress: () => dispatch({
+                                                type: LOGIN_USER_FAIL}) 
+            } ]);
         }
         else
         {
@@ -42,8 +44,7 @@ export const loginUser = ({email, password}) => {
 };
 
 const loginSuccess = (dispatch, user) => { // dispatch ile reducer hareket ettiriliyor. login_user_succes diye bir type göndericem ve o type loading'i false edicek.
-    Alert.alert('Message', 'Email and Password should not be empty.', 
-            [ {text: 'Okay', onPress: ()=> null} ]);
+    console.log('login başarılı');
     dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: user
@@ -51,7 +52,10 @@ const loginSuccess = (dispatch, user) => { // dispatch ile reducer hareket ettir
 };
 
 const loginFail = (dispatch) => {
+    Alert.alert('Message', 'Login Failed', 
+            [ {text: 'Okay', onPress: ()=> null} ]);
     dispatch({
         type: LOGIN_USER_FAIL
     });
+    //Actions.main();
 };

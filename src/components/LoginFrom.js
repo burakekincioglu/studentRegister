@@ -12,25 +12,16 @@ import Spinner from './Spinner';
 import reducers from '../reducers';
 
 class LoginForm extends Component {
-    state = {email: '', password: '', loading: false};
+    //state = {email: '', password: '', loading: false};
     clickLogin(){
-        const {email, password} = this.props;        
+        const {email, password} = this.props;      
         this.props.loginUser({email, password});
-    }
-    loginSuccess() {
-        console.log('login başarılı');
-        this.setState({loading: false});
-    }
-    loginFail()
-    {
-        Alert.alert('Message', 'Email or Password is wrong.', 
-            [ {text: 'Okay', onPress: ()=> null} ]);
-        this.setState({loading: false});
     }
 
     renderButton()
     {
         if(!this.props.loading){
+           console.log('props.loading: ' + this.props.loading);
            return <Button onPress={this.clickLogin.bind(this)}> Login </Button>;
         }
         return <Spinner size="small" />;
