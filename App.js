@@ -8,7 +8,7 @@ import ReduxThunk from 'redux-thunk';
 //import { createStore } from 'redux';
 import reducers from './src/reducers';
 import LoginForm from './src/components/LoginFrom';
-
+import { Router } from 'react-native-router-flux';
 
 class App extends Component {
 
@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <Provider store={store}>
       <View>
-      <LoginForm />
+      <Router />
       </View>
       
       </Provider>
