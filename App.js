@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {Provider} from 'react-redux';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-//import { createStore } from 'redux';
 import reducers from './src/reducers';
-import LoginForm from './src/components/LoginFrom';
-import { Router } from 'react-native-router-flux';
+import Router from './src/Router';
 
 class App extends Component {
 
