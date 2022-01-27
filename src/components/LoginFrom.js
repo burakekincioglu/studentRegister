@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert,TextInput} from 'react-native';
+import {Alert,TextInput, View} from 'react-native';
 import firebase from 'firebase/compat';
 //import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
@@ -31,6 +31,7 @@ class LoginForm extends Component {
         console.log('response passw: ' + this.props.password);
         const {inputStyle} = styles;
         return(
+            <View style={{flex:1,backgroundColor: 'white'}}>
             <Card>
                 <CardSection>
                     <TextInput 
@@ -54,7 +55,8 @@ class LoginForm extends Component {
                 <CardSection>
                     {this.renderButton()}
                 </CardSection>
-            </Card> 
+            </Card>
+            </View> 
         );
     }
     

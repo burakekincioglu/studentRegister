@@ -1,5 +1,6 @@
 import { Alert } from "react-native";
 import firebase from "firebase/compat";
+import {Actions} from 'react-native-router-flux';
 import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL } from "./types";
 
 export const emailChanged = (email) => {
@@ -57,5 +58,5 @@ const loginFail = (dispatch) => {
     dispatch({
         type: LOGIN_USER_FAIL
     });
-    //Actions.main();
+    Actions.studentList();
 };
