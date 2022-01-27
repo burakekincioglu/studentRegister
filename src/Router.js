@@ -6,7 +6,7 @@ import StudentList from "./components/StudentList";
 const RouterComponent = () => {
     
     return(
-        <Router>
+        <Router sceneStyle={{marginTop: 65}}>
             <Scene key='kimlik'>
                 <Scene key="loginScreen" component={LoginForm} title="Login Screen" />
                 <Scene key="studentList" component={StudentList} title="Student List" />
