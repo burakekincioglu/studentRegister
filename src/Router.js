@@ -9,7 +9,11 @@ const RouterComponent = () => {
         <Router sceneStyle={{marginTop: 65}}>
             <Scene key='kimlik'>
                 <Scene key="loginScreen" component={LoginForm} title="Login Screen" />
-                <Scene key="studentList" component={StudentList} title="Student List" />
+                
+            </Scene>
+
+            <Scene key="main">
+            <Scene key="studentList" component={StudentList} title="Student List" />
             </Scene>
         </Router>
     );

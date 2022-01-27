@@ -58,5 +58,5 @@ const loginFail = (dispatch) => {
     dispatch({
         type: LOGIN_USER_FAIL
     });
-    Actions.studentList();
+    Actions.main();
 };
