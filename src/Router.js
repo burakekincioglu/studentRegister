@@ -13,7 +13,10 @@ const RouterComponent = () => {
             </Scene>
 
             <Scene key="main">
-            <Scene key="studentList" component={StudentList} title="Student List" />
+            <Scene onRight={()=> console.log('')} // scene sağ üst butona tıklandığında çalışacak fonksiyon
+            rightTitle="Yeni" // sağ üzt butonun text'i
+            key="studentList" 
+            component={StudentList} title="Student List" />
             </Scene>
         </Router>
     );
