@@ -1,5 +1,4 @@
 import React from "react";
-import { ActionSheetIOS } from "react-native";
 import {Scene, Router, Actions} from 'react-native-router-flux';
 import LoginForm from './components/LoginFrom';
 import StudentCreate from "./components/StudentCreat";
