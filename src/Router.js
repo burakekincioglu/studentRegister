@@ -17,7 +17,7 @@ const RouterComponent = () => {
             <Scene key="main">
             <Scene 
                 onRight={()=> Actions.StudentCreate()} // scene sağ üst butona tıklandığında çalışacak fonksiyon
-                rightTitle="Yeni" // sağ üzt butonun text'i
+                rightTitle="New" // sağ üzt butonun text'i
                 key="studentList" 
                 component={StudentList} title="Student List" 
             />
