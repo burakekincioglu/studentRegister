@@ -1,6 +1,7 @@
 import React from "react";
 import {Scene, Router} from 'react-native-router-flux';
 import LoginForm from './components/LoginFrom';
+import StudentCreate from "./components/StudentCreat";
 import StudentList from "./components/StudentList";
 
 const RouterComponent = () => {
@@ -19,7 +20,15 @@ const RouterComponent = () => {
             component={StudentList} title="Student List" />
             </Scene>
 
+            <Scene
+                key="studentRegister"
+                component={StudentCreate}
+                title="Student Create"
+            />
+
             
+
+
         </Router>
     );
 }
