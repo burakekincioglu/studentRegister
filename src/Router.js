@@ -1,5 +1,6 @@
 import React from "react";
-import {Scene, Router} from 'react-native-router-flux';
+import { ActionSheetIOS } from "react-native";
+import {Scene, Router, Actions} from 'react-native-router-flux';
 import LoginForm from './components/LoginFrom';
 import StudentCreate from "./components/StudentCreat";
 import StudentList from "./components/StudentList";
@@ -14,10 +15,12 @@ const RouterComponent = () => {
             </Scene>
 
             <Scene key="main">
-            <Scene onRight={()=> console.log('')} // scene sağ üst butona tıklandığında çalışacak fonksiyon
-            rightTitle="Yeni" // sağ üzt butonun text'i
-            key="studentList" 
-            component={StudentList} title="Student List" />
+            <Scene 
+                onRight={()=> Actions.StudentCreate()} // scene sağ üst butona tıklandığında çalışacak fonksiyon
+                rightTitle="Yeni" // sağ üzt butonun text'i
+                key="studentList" 
+                component={StudentList} title="Student List" 
+            />
             </Scene>
 
             <Scene
