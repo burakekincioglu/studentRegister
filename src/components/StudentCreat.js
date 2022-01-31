@@ -74,5 +74,9 @@ const styles = {
       }
 };
 
+const mapToStateProps = ({studentListResponse}) => {
+    const { name, surname, no, sube } = studentListResponse;
+    return { name, surname, no, sube };
+};
 
-export default connect(null, studentChanged)(StudentCreate);
+export default connect(mapToStateProps, {studentChanged})(StudentCreate);
