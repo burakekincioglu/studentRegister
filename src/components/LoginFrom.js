@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Alert,TextInput, View} from 'react-native';
-import firebase from 'firebase/compat';
+//import firebase from 'firebase/compat';
 //import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 //import ReduxThunk from 'redux-thunk';

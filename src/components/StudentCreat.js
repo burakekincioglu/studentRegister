@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import {TextInput, Picker, Text } from 'react-native';
 import { connect } from 'react-redux';
-import {Button, Card, CardSection} from '../components';
-import { studentChanged, StudentCreate } from '../actions/StudentListActions';
+import {Button} from './Button';
+import { Card } from './Card';
+import { CardSection } from './CardSection';
+import { studentChanged, studentCreate } from '../actions/StudentListActions';
 
 class StudentCreate extends Component {
 
     clickRegister() {
         const { name, surname, no, sube } = this.props;
 
-        this.props.StudentCreate({name, surname, no, sube});
+        this.props.studentCreate({name, surname, no, sube});
     }
 
     render() {
@@ -81,4 +83,4 @@ const mapToStateProps = ({studentListResponse}) => {
     return { name, surname, no, sube };
 };
 
-export default connect(mapToStateProps, {studentChanged, StudentCreate})(StudentCreate);
+export default connect(mapToStateProps, {studentChanged, studentCreate})(StudentCreate);

@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { STUDENT_CHANGED, CREATE_REQUEST, CREATE_REQUEST_SUCCESS } from "./types";
 
 
@@ -14,7 +14,7 @@ export const studentChanged = ({props, value}) => {
 
 };
 
-export const StudentCreate = ({ name, surname, no, sube }) => {
+export const studentCreate = ({ name, surname, no, sube }) => {
     const { currentUser } = firebase.auth();
     return (dispatch) => {
         dispatch({ type: CREATE_REQUEST });
