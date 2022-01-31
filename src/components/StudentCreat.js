@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {Button} from './Button';
 import { Card } from './Card';
 import { CardSection } from './CardSection';
+import {Spinner} from './Spinner';
 import { studentChanged, studentCreate } from '../actions/StudentListActions';
 
 class StudentCreate extends Component {
@@ -12,6 +13,15 @@ class StudentCreate extends Component {
         const { name, surname, no, sube } = this.props;
 
         this.props.studentCreate({name, surname, no, sube});
+    }
+
+    renderButton()
+    {
+        if(!this.props.loading){
+           console.log('props.loading: ' + this.props.loading);
+           return <Button onPress={this.clickRegister.bind(this)}> Register </Button>;
+        }
+        return <Spinner size="small" />;
     }
 
     render() {
@@ -60,7 +70,7 @@ class StudentCreate extends Component {
                 </CardSection>
 
                 <CardSection>
-                    <Button onPress={this.clickRegister.bind(this)}> Register </Button>;
+                    {this.renderButton()};
                 </CardSection>
 
             </Card>
@@ -79,8 +89,8 @@ const styles = {
 };
 
 const mapToStateProps = ({studentListResponse}) => {
-    const { name, surname, no, sube } = studentListResponse;
-    return { name, surname, no, sube };
+    const { name, surname, no, sube, loading } = studentListResponse;
+    return { name, surname, no, sube, loading };
 };
 
 export default connect(mapToStateProps, {studentChanged, studentCreate})(StudentCreate);
