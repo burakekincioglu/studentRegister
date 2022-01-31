@@ -1,4 +1,7 @@
-import { STUDENT_CHANGED } from "./types";
+import firebase from "firebase";
+import { STUDENT_CHANGED, CREATE_REQUEST, CREATE_REQUEST_SUCCESS } from "./types";
+
+
 
 export const studentChanged = ({props, value}) => {
 
@@ -9,4 +12,16 @@ export const studentChanged = ({props, value}) => {
         });
     };
 
+};
+
+export const StudentCreate = ({ name, surname, no, sube }) => {
+    const { currentUser } = firebase.auth();
+    return (dispatch) => {
+        dispatch({ type: CREATE_REQUEST });
+        firebase.database().ref(`/users/${currentUser.uid}/students`)
+        .push({ name, surname, no, sube })
+        .then(() => {
+            dispatch({ type: CREATE_REQUEST_SUCCESS });
+        })
+    }
 };
