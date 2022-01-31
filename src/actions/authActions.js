@@ -6,7 +6,7 @@ import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_
 export const emailChanged = (email) => {
     return (dispatch) => {
         dispatch({
-            type: 'EMAIL_CHANGED',
+            type: EMAIL_CHANGED,
             payload: email
         });
     };
@@ -15,7 +15,7 @@ export const emailChanged = (email) => {
 export const passwordChanged = (password) => {
     return (dispatch) => {
         dispatch({ // dispatch burada reducer'ı ayağa kaldırmak için var
-            type: 'PASSWORD_CHANGED',
+            type: PASSWORD_CHANGED,
             payload: password
         });
     };
@@ -27,8 +27,7 @@ export const loginUser = ({email, password}) => {
         if(email === '' || password === '')
         {
             Alert.alert('Message', 'Email and Password should not be empty.', 
-            [ {text: 'Okay', onPress: () => dispatch({
-                                                type: LOGIN_USER_FAIL}) 
+            [ {text: 'Okay', onPress: () => dispatch({type: LOGIN_USER_FAIL}) 
             } ]);
         }
         else

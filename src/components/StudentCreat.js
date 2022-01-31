@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {TextInput, Picker, Text } from 'react-native';
+import { connect } from 'react-redux';
 import {Button, Card, CardSection} from '../components';
+import { studentChanged } from '../actions/StudentListActions';
 
 class StudentCreate extends Component {
 
@@ -17,7 +19,7 @@ class StudentCreate extends Component {
                     placeholder='Name'
                     style={inputStyle}
                     value={this.props.name}
-                    onChangeText={name => this.props.studentChanged(name)} // ikinci kullanımı {text => this.setState({email: text})}
+                    onChangeText={name => this.props.studentChanged({props: 'name', value: name})} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -26,7 +28,7 @@ class StudentCreate extends Component {
                     placeholder='SurName'
                     style={inputStyle}
                     value={this.props.surname}
-                    onChangeText={surname => this.props.studentChanged(surname)} // ikinci kullanımı {text => this.setState({email: text})}
+                    onChangeText={surname => this.props.studentChanged({props: 'surname', value: surname})} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -35,7 +37,7 @@ class StudentCreate extends Component {
                     placeholder='No'
                     style={inputStyle}
                     value={this.props.no}
-                    onChangeText={no => this.props.studentChanged(no)} // ikinci kullanımı {text => this.setState({email: text})}
+                    onChangeText={no => this.props.studentChanged({props: 'no', value: no})} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -44,7 +46,7 @@ class StudentCreate extends Component {
                     <Picker
                         style={{flex: 1}}
                         selectedValue={this.props.sube}
-                        onValueChange={sube => this.props.studentChanged(sube)}
+                        onValueChange={sube => this.props.studentChanged({props: 'sube', value: sube})}
                     >
                         <Picker.Item label="A şubesi" value="asube" />
                         <Picker.Item label="B şubesi" value="bsube" />
@@ -73,4 +75,4 @@ const styles = {
 };
 
 
-export default StudentCreate;
+export default connect(null, studentChanged)(StudentCreate);
