@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, {Component} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import { connect } from 'react-redux';
 import {studentListData} from '../actions/StudentActions';
 
@@ -24,7 +24,7 @@ class StudentList extends Component {
     }  
 
     renderRow(student) {
-        return <ListItem student={student} />;
+        return <FlatList student={student} />;
     }
 
     render() {

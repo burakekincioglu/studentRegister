@@ -7,22 +7,35 @@ import { CardSection } from './CardSection';
 import {Spinner} from './Spinner';
 import { studentChanged, studentCreate } from '../actions/StudentActions';
 
-class StudentCreate extends Component {
+class StudentUpdate extends Component {
 
-    clickRegister() {
+    clickUpdate() {
         const { name, 
                 surname, 
                 no, 
-                sube } = this.props;
+                sube } = this.state;
 
         this.props.studentCreate({name, surname, no, sube});
+    }
+
+    clickDelete() {
+
     }
 
     renderButton()
     {
         if(!this.props.loading){
            console.log('props.loading: ' + this.props.loading);
-           return <Button onPress={this.clickRegister.bind(this)}> Register </Button>;
+           return <Button onPress={this.clickUpdate.bind(this)}> Update </Button>;
+        }
+        return <Spinner size="small" />;
+    }
+
+    renderDeleteButton()
+    {
+        if(!this.props.loading){
+           console.log('props.loading: ' + this.props.loading);
+           return <Button onPress={this.clickDelete.bind(this)}> Delete </Button>;
         }
         return <Spinner size="small" />;
     }
@@ -35,8 +48,8 @@ class StudentCreate extends Component {
                 <TextInput 
                     placeholder='Name'
                     style={inputStyle}
-                    value={this.props.name}
-                    onChangeText={name => this.props.studentChanged({props: 'name', value: name})} // ikinci kullanımı {text => this.setState({email: text})}
+                    value={this.state.name}
+                    onChangeText={name => this.setState({name})} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -44,8 +57,8 @@ class StudentCreate extends Component {
                 <TextInput 
                     placeholder='SurName'
                     style={inputStyle}
-                    value={this.props.surname}
-                    onChangeText={surname => this.props.studentChanged({props: 'surname', value: surname})} // ikinci kullanımı {text => this.setState({email: text})}
+                    value={this.state.surname}
+                    onChangeText={surname => this.setState({surname})} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -53,8 +66,8 @@ class StudentCreate extends Component {
                 <TextInput 
                     placeholder='No'
                     style={inputStyle}
-                    value={this.props.no}
-                    onChangeText={no => this.props.studentChanged({props: 'no', value: no})} // ikinci kullanımı {text => this.setState({email: text})}
+                    value={this.state.no}
+                    onChangeText={no => this.props.setState({no})} // ikinci kullanımı {text => this.setState({email: text})}
                     /> 
                 </CardSection>
 
@@ -62,8 +75,8 @@ class StudentCreate extends Component {
                     <Text>Şube</Text>
                     <Picker
                         style={{flex: 1}}
-                        selectedValue={this.props.sube}
-                        onValueChange={sube => this.props.studentChanged({props: 'sube', value: sube})}
+                        selectedValue={this.state.sube}
+                        onValueChange={sube => this.props.setState({sube})}
                     >
                         <Picker.Item label="A şubesi" value="asube" />
                         <Picker.Item label="B şubesi" value="bsube" />
@@ -74,6 +87,10 @@ class StudentCreate extends Component {
 
                 <CardSection>
                     {this.renderButton()};
+                </CardSection>
+
+                <CardSection>
+                    {this.renderDeleteButton()};
                 </CardSection>
 
             </Card>
@@ -92,8 +109,8 @@ const styles = {
 };
 
 const mapToStateProps = ({studentListResponse}) => {
-    const { name, surname, no, sube, loading } = studentListResponse;
-    return { name, surname, no, sube, loading };
+    const { loading } = studentListResponse;
+    return { loading };
 };
 
-export default connect(mapToStateProps, {studentChanged, studentCreate})(StudentCreate);
+export default connect(mapToStateProps, {studentChanged, studentCreate})(StudentUpdate);
