@@ -5,7 +5,7 @@ import {Button} from './Button';
 import { Card } from './Card';
 import { CardSection } from './CardSection';
 import {Spinner} from './Spinner';
-import { studentChanged, studentCreate } from '../actions/StudentActions';
+import { studentChanged, studentUpdate } from '../actions/StudentActions';
 
 class StudentUpdate extends Component {
     state = {name: '', surname: '', no: '', sube: ''};
@@ -31,7 +31,7 @@ class StudentUpdate extends Component {
                 no, 
                 sube } = this.state;
 
-        this.props.studentCreate({name, surname, no, sube});
+        this.props.studentUpdate({name, surname, no, sube, uid: this.props.student.uid});
     }
 
     clickDelete() {
@@ -129,4 +129,4 @@ const mapToStateProps = ({studentListResponse}) => {
     return { loading };
 };
 
-export default connect(mapToStateProps, {studentChanged, studentCreate})(StudentUpdate);
+export default connect(mapToStateProps, {studentChanged, studentUpdate})(StudentUpdate);
