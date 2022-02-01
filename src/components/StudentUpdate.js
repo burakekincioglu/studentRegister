@@ -8,6 +8,22 @@ import {Spinner} from './Spinner';
 import { studentChanged, studentCreate } from '../actions/StudentActions';
 
 class StudentUpdate extends Component {
+    state = {name: '', surname: '', no: '', sube: ''};
+
+    componentWillMount() {
+        const { name, 
+                surname, 
+                no, 
+                sube } = this.props.student;
+
+            this.setState({
+                name, 
+                surname, 
+                no, 
+                sube
+                });
+
+    }
 
     clickUpdate() {
         const { name, 

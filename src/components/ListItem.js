@@ -6,7 +6,7 @@ import {CardSection} from './CardSection';
 class ListItem extends Component {
 
     ogrenciClick() {
-        Actions.studentCreate();
+        Actions.studentUpdate({ student: this.props.student});
     }
 
     render(){
