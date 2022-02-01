@@ -9,15 +9,19 @@ class StudentList extends Component {
 
     componentWillMount() {
         this.props.studentListData();
-
+        this.createDataSource(this.props);
     }
 
     componentWillReceiveProps(nextProps) { // nextProps burada this.state içeriğini dönüyor
+        this.createDataSource({nextProps});
+    }
+
+    createDataSource({studentsArray}){
         const ds = new FlatList.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
-    this.dataSource = ds.cloneWithRows(nextProps.studentsArray);
-    }
+        this.dataSource = ds.cloneWithRows(studentsArray);
+    }  
 
     renderRow(student) {
         return <ListItem student={student} />;
