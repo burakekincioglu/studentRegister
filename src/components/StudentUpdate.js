@@ -40,8 +40,8 @@ class StudentUpdate extends Component {
 
     renderButton()
     {
-        if(!this.props.loading){
-           console.log('props.loading: ' + this.props.loading);
+        if(!this.props.loadingUpdate){
+           console.log('props.loading: ' + this.props.loadingUpdate);
            return <Button onPress={this.clickUpdate.bind(this)}> Update </Button>;
         }
         return <Spinner size="small" />;
@@ -49,8 +49,8 @@ class StudentUpdate extends Component {
 
     renderDeleteButton()
     {
-        if(!this.props.loading){
-           console.log('props.loading: ' + this.props.loading);
+        if(!this.props.loadingDelete){
+           console.log('props.loading: ' + this.props.loadingDelete);
            return <Button onPress={this.clickDelete.bind(this)}> Delete </Button>;
         }
         return <Spinner size="small" />;
@@ -124,9 +124,9 @@ const styles = {
       }
 };
 
-const mapToStateProps = ({studentListResponse}) => {
-    const { loading } = studentListResponse;
-    return { loading };
+const mapToStateProps = ({studentUpdateResponse}) => {
+    const { loadingUpdate } = studentUpdateResponse;
+    return { loadingUpdate };
 };
 
 export default connect(mapToStateProps, {studentChanged, studentUpdate})(StudentUpdate);
