@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ListView} from 'react-native';
+import { connect } from 'react-redux';
+import {studentListData} from '../actions/StudentActions';
+
 
 class StudentList extends Component {
+
+    componentWillMount() {
+        this.props.studentListData();
+        
+    }
+
     render() {
         return(
             <View>
@@ -13,4 +22,8 @@ class StudentList extends Component {
     }
 }
 
-export default StudentList;
+const mapStateToProps = ({studentDataResponse}) => {
+
+};
+
+export default connect(mapStateToProps, {studentListData})(StudentList);
