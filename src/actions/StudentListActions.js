@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import { STUDENT_CHANGED, CREATE_REQUEST, CREATE_REQUEST_SUCCESS } from "./types";
+import { Actions } from "react-native-router-flux";
 
 
 
@@ -22,6 +23,7 @@ export const studentCreate = ({ name, surname, no, sube }) => {
         .push({ name, surname, no, sube })
         .then(() => {
             dispatch({ type: CREATE_REQUEST_SUCCESS });
+            Actions.pop();//bir önceki sayfaya dönmeyi sağlar. kayıt sayfasından öğrenci listesi sayfasına dönmüş oldu
         })
     }
 };
