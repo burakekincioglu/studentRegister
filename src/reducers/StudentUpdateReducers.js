@@ -1,7 +1,8 @@
-import { UPDATE_REQUEST, UPDATE_REQUEST_SUCCESS } from "../actions/types";
+import { UPDATE_REQUEST, UPDATE_REQUEST_SUCCESS, DELETE_REQUEST, DELETE_REQUEST_SUCCESS } from "../actions/types";
 
 const INITIAL_STATE = {
-    loadingUpdate: false
+    loadingUpdate: false,
+    loadingDelete: false
 };
 
 export default (state= INITIAL_STATE, action) => {
@@ -9,6 +10,10 @@ export default (state= INITIAL_STATE, action) => {
         case UPDATE_REQUEST:
             return { loadingUpdate: true};
         case UPDATE_REQUEST_SUCCESS:
+            return  INITIAL_STATE;
+        case DELETE_REQUEST:
+            return {loadingDelete: ture};
+            case DELETE_REQUEST_SUCCESS:
             return  INITIAL_STATE;
         default:
             return state;

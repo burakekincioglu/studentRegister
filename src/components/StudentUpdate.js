@@ -35,7 +35,7 @@ class StudentUpdate extends Component {
     }
 
     clickDelete() {
-
+        this.props.studentDelete({uid: this.props.student.uid});
     }
 
     renderButton()
@@ -125,8 +125,8 @@ const styles = {
 };
 
 const mapToStateProps = ({studentUpdateResponse}) => {
-    const { loadingUpdate } = studentUpdateResponse;
-    return { loadingUpdate };
+    const { loadingUpdate, loadingDelete } = studentUpdateResponse;
+    return { loadingUpdate, loadingDelete };
 };
 
 export default connect(mapToStateProps, {studentChanged, studentUpdate})(StudentUpdate);

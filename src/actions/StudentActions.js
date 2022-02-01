@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import { STUDENT_CHANGED, CREATE_REQUEST, CREATE_REQUEST_SUCCESS, STUDENT_LIST_DATA_SUCCESS, UPDATE_REQUEST,  UPDATE_REQUEST_SUCCESS} from "./types";
+import { STUDENT_CHANGED, CREATE_REQUEST, CREATE_REQUEST_SUCCESS, STUDENT_LIST_DATA_SUCCESS, UPDATE_REQUEST,  UPDATE_REQUEST_SUCCESS, DELETE_REQUEST, DELETE_REQUEST_SUCCESS} from "./types";
 import { Actions } from "react-native-router-flux";
 
 
@@ -33,9 +33,22 @@ export const studentUpdate = ({ name, surname, no, sube, uid }) => {
     return (dispatch) => {
         dispatch({ type: UPDATE_REQUEST });
         firebase.database().ref(`/users/${currentUser.uid}/students/${uid}`)
-        .push({ name, surname, no, sube })
+        .set({ name, surname, no, sube })
         .then(() => {
             dispatch({ type: UPDATE_REQUEST_SUCCESS });
+            Actions.pop();//bir önceki sayfaya dönmeyi sağlar. kayıt sayfasından öğrenci listesi sayfasına dönmüş oldu
+        })
+    }
+};
+
+export const studentDelete = ({ uid }) => {
+    const { currentUser } = firebase.auth();
+    return (dispatch) => {
+        dispatch({ type: DELETE_REQUEST });
+        firebase.database().ref(`/users/${currentUser.uid}/students/${uid}`)
+        .remove()
+        .then(() => {
+            dispatch({ type: DELETE_REQUEST_SUCCESS });
             Actions.pop();//bir önceki sayfaya dönmeyi sağlar. kayıt sayfasından öğrenci listesi sayfasına dönmüş oldu
         })
     }
