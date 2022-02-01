@@ -5,7 +5,7 @@ import {Button} from './Button';
 import { Card } from './Card';
 import { CardSection } from './CardSection';
 import {Spinner} from './Spinner';
-import { studentChanged, studentCreate } from '../actions/StudentListActions';
+import { studentChanged, studentCreate } from '../actions/StudentActions';
 
 class StudentCreate extends Component {
 
